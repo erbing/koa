@@ -7,17 +7,23 @@ var koa = require('koa');
 var convert = require('koa-convert');
 var proxy = require('koa-proxy');
 
-var app = koa();
+/*
+*测试使用的中间件
+* 
+*/
+var helloWorld = require('koa-hello-world');
+
+var app = new koa();
 
 // app.use(function *(){
-//     this.body = "hellos world";
+//     this.body = "hellosss world";
 //     // this.body = app; test  return Obj
 // }).listen(3000);
 
 // app.use(helloWorld()).listen(1234);
 
 new WebpackDevServer(webpack(config), {
-  publicPath: config.output.publicPath,
+  //publicPath: config.output.publicPath,
   hot: true,
   noInfo: false,
   historyApiFallback: true,
@@ -25,13 +31,15 @@ new WebpackDevServer(webpack(config), {
   headers: { 'Access-Control-Allow-Origin': '*' }
 }).listen(8080, '127.0.0.1', function(err,result) {
   if (err) {
-    console.log(err);
+    console.log(err + "s");
   }
-  console.log('Webpack Listening at 127.0.0.1:1234');
+  console.log('Webpack Listening at 127.0.0.1:3000');
 });
 
 // app.use(convert(proxy({
-//   host:'http://127.0.0.1:8080/js',
+//   host:'http://127.0.0.1:3000/js',
 //   match: /^\/js\//
 // })));
+
+
 
